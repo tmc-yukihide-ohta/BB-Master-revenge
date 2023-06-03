@@ -5,7 +5,7 @@ export const ItemField = (props) => {
   const [commntText, setComment] = useState("");
   const ref = useRef("");
 
-  const URL = process.env.NODE_ENV === "production" ? "https://pokeka-search-support-app-front-q5mx.onrender.com":"http://localhost:8080"
+  const URL = process.env.NODE_ENV === "production" ? "https://bb-master-revenge-front.onrender.com":"http://localhost:8080"
 
   let patchCheck;
   const getDataFunc = () => {
