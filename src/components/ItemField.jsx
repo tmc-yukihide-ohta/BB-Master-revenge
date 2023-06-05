@@ -47,6 +47,27 @@ export const ItemField = (props) => {
       .then(() => getDataFunc());
   };
 
+  const postClickAction = (e) => {
+    const id = e.target.id;
+    const body = {id:id,
+                  isWaiting:true,
+                  seller:"運営",
+                  comment:"譲渡時キャンセルの為、再掲載"};
+    fetch(`${URL}/table`, {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          patchCheck += 1;
+        }
+      })
+      .then(() => getDataFunc());
+  };
+
   const itemView = () => {
     const elementsArr = [];
     items.forEach((item, index) => {
@@ -91,7 +112,26 @@ export const ItemField = (props) => {
               <br />
               {item.comment}
             </td>
+            <td className="request">
+              <label>
+                譲渡時キャンセルボタン
+              </label>
+              <br />
+              <input
+                onChange={(e) => setComment(e.target.value)}
+                ref={ref}
+                id={`input${item.id}`}
+                className="comment"
+                type="text"
+                placeholder="※改行不可"
+                required
+              ></input>
+              <button id={item.id} onClick={postClickAction}>
+                データ復元
+              </button>
+            </td>
             <td className="request"></td>
+
           </tr>
         );
       }

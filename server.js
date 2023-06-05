@@ -35,6 +35,7 @@ app.patch("/table/:id", async (req, res) => {
   console.log("patch受信");
   const patchData = req.body;
   console.log(patchData.comment);
+
   const AllPokemon2 = (id, comment) => {
     return knex
       .from("products")
@@ -43,6 +44,29 @@ app.patch("/table/:id", async (req, res) => {
   };
   const AllpokemonObj = await AllPokemon2(patchData.id, patchData.comment);
   res.sendStatus(200);
+});
+
+app.post("/table", async (req, res) => {
+  console.log("post受信");
+  const patchData = req.body;
+  console.log(patchData.comment);
+
+  const postFunc = (id,isWaiting,seller,comment) => {
+    return knex("products")
+      .where({ id: id }) 
+      .update({ isWaiting:isWaiting,
+                seller:seller,
+                comment:comment}) 
+      .then(() => {
+        console.log('データの更新が完了しました');
+      })
+      .catch((err) => {
+        console.error('データの更新中にエラーが発生しました:', err);
+      })
+    }  
+  await postFunc(patchData.id,patchData.isWaiting,patchData.seller,patchData.comment);
+
+  res.status(200).json({ message: `ユーザーID ${patchData.id} のデータを更新しました` });
 });
 
  app.listen(port, () => {
