@@ -92,7 +92,7 @@ export const ItemField = (props) => {
                 譲渡依頼してください
               </label>
               <br />
-              <div className="textbtn">
+              <div className="textbtn-area">
                 <input
                   onChange={(e) => setComment(e.target.value)}
                   ref={ref}
