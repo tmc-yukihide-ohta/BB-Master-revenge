@@ -5,7 +5,10 @@ export const ItemField = (props) => {
   const [commntText, setComment] = useState("");
   const ref = useRef("");
 
-  const URL = process.env.NODE_ENV === "production" ? "https://bb-master-revenge-front.onrender.com":"http://localhost:8080"
+  const URL =
+    process.env.NODE_ENV === "production"
+      ? "https://bb-master-revenge-front.onrender.com"
+      : "http://localhost:8080";
 
   let patchCheck;
   const getDataFunc = () => {
@@ -49,10 +52,12 @@ export const ItemField = (props) => {
 
   const postClickAction = (e) => {
     const id = e.target.id;
-    const body = {id:id,
-                  isWaiting:true,
-                  seller:"運営",
-                  comment:"譲渡時キャンセルの為、再掲載"};
+    const body = {
+      id: id,
+      isWaiting: true,
+      seller: "運営",
+      comment: "譲渡時キャンセルの為、再掲載",
+    };
     fetch(`${URL}/table`, {
       method: "POST",
       body: JSON.stringify(body),
@@ -83,21 +88,25 @@ export const ItemField = (props) => {
             </td>
             <td className="request">
               <label>
-                部屋番号・氏名・今日の日付を入力し、譲渡依頼してください
+                部屋番号・氏名・今日の日付を入力し、
+                <br />
+                譲渡依頼してください
               </label>
               <br />
-              <input
-                onChange={(e) => setComment(e.target.value)}
-                ref={ref}
-                id={`input${item.id}`}
-                className="comment"
-                type="text"
-                placeholder="※改行不可"
-                required
-              ></input>
-              <button id={item.id} onClick={clickAction}>
-                譲渡依頼
-              </button>
+              <div className="textbtn">
+                <input
+                  onChange={(e) => setComment(e.target.value)}
+                  ref={ref}
+                  id={`input${item.id}`}
+                  className="comment"
+                  type="text"
+                  placeholder="※改行不可"
+                  required
+                ></input>
+                <button id={item.id} onClick={clickAction}>
+                  譲渡依頼
+                </button>
+              </div>
             </td>
           </tr>
         );
@@ -113,11 +122,9 @@ export const ItemField = (props) => {
               {item.comment}
             </td>
             <td className="request">
-              <label>
-                譲渡時キャンセルボタン
-              </label>
-              <br />
-              <input
+              {/* <label>譲渡時キャンセルボタン</label>
+              <br /> */}
+              {/* <input
                 onChange={(e) => setComment(e.target.value)}
                 ref={ref}
                 id={`input${item.id}`}
@@ -125,13 +132,13 @@ export const ItemField = (props) => {
                 type="text"
                 placeholder="※改行不可"
                 required
-              ></input>
+              ></input> */}
               <button id={item.id} onClick={postClickAction}>
-                データ復元
+                譲渡
+                <br />
+                キャンセル
               </button>
             </td>
-            <td className="request"></td>
-
           </tr>
         );
       }
