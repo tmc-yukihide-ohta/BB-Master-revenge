@@ -9,7 +9,6 @@ export const ItemField = (props) => {
 
   let patchCheck;
   const getDataFunc = () => {
-    // fetch(`${process.env.DATABASE_URL}/table`, { method: "GET" })
     fetch(`${URL}/table`, { method: "GET" })
       .then((res) => res.json())
       .then((getData) => {

@@ -1,13 +1,11 @@
-import React from "react";
-// [{ id:1, name:"sasaki"  } , { id:2, name:"sasayama"  }]
+import React, { useState, useEffect, useRef } from "react";
 import { ItemField } from "./ItemField";
 
-export const TableField = () => {
-  // const className1 = "itemId";
-  // const className2 = "itemName";
-  // const className3 = "itemDescription";
-  // const className4 = "itemStatus";
-  // const className5 = "request";
+export const TableField = (props) => {
+const {handleChange} = props
+  useEffect(() => {
+    console.log('TableuseEffect実行');
+  }, []);
 
   return (
     <table className="mainTable">
