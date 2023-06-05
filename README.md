@@ -1,6 +1,7 @@
 BB-Master (売買マスター)
 レーヴ日進での不用品の円滑な売買・譲渡が行える
 
+実際の挙動は以下のページで確認できる。
 参考URL：https://bb-master-revenge-front.onrender.com/
 
 インストール
